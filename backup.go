@@ -60,7 +60,7 @@ type Service struct {
 }
 
 func init() {
-	togo.RegisterProviderFunc("backup", togo.PriorityService, func(k *togo.Kernel) error {
+	togo.RegisterProviderFunc("backup", togo.PriorityLate+10, func(k *togo.Kernel) error {
 		s := &Service{k: k, cfg: configFromEnv()}
 		k.Set("backup", s)
 		if k.Router != nil {
